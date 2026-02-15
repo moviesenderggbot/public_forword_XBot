@@ -26,4 +26,4 @@ COPY . .
 EXPOSE 8000
 
 # Run both services properly
-CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:8000 & python3 main.py"]
+CMD gunicorn app:app --bind 0.0.0.0:$PORT & python3 main.py
