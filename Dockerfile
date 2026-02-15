@@ -1,10 +1,29 @@
-RUN apt update && apt upgrade -y
-RUN apt install git -y
-COPY requirements.txt /requirements.txt
 
-RUN cd /
-RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-RUN JishuDeveloper /Ultra-Forward-Bot
+FROM python:3.10-slim
+
+# Prevent Python from buffering logs
+ENV PYTHONUNBUFFERED=1
+
+# Set working directory
 WORKDIR /Ultra-Forward-Bot
-COPY start.sh /start.sh
-CMD gunicorn app:app & python3 main.py
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y git && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first (for better caching)
+COPY requirements.txt .
+
+# Upgrade pip & install dependencies
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy project files
+COPY . .
+
+# Expose port (if using Flask/FastAPI)
+EXPOSE 8000
+
+# Run both services properly
+CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:8000 & python3 main.py"]
