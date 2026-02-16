@@ -89,9 +89,9 @@ class Translation(object):
 
 <b>🔁 Filtered Message :</b> <code>{}</code>
 
-<b>📊 Current Status :</b> <code>{}</code>
+<b>📊 Percentage Status :</b> <code>{}</code> %
 
-<b>🔥 Percentage :</b> <code>{}</code> %
+<b>🔥 EAT Status :</b> <code>{}</code> 
 
 {}
 """
