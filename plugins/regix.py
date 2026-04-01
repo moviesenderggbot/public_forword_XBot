@@ -13,6 +13,7 @@ import math
 import time
 import asyncio 
 import logging
+import random
 from .utils import STS
 from database import db 
 from .test import CLIENT , start_clone_bot
@@ -70,7 +71,7 @@ async def pub_(bot, message):
     await db.add_frwd(user)
     await send(client, user, "🩷 Forwarding Started")
     sts.add(time=True)
-    sleep = 1 if _bot['is_bot'] else 10
+    sleep = random.randint(19, 33)
     await msg_edit(m, "Processing...") 
     temp.IS_FRWD_CHAT.append(i.TO)
     temp.lock[user] = locked = True
@@ -109,7 +110,7 @@ async def pub_(bot, message):
                         or completed <= 100): 
                       await forward(client, MSG, m, sts, protect)
                       sts.add('total_files', notcompleted)
-                      await asyncio.sleep(10)
+                      await asyncio.sleep(25)
                       MSG = []
                 else:
                    new_caption = custom_caption(message, caption)
