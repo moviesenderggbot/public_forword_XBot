@@ -71,7 +71,7 @@ async def pub_(bot, message):
     await db.add_frwd(user)
     await send(client, user, "🩷 Forwarding Started")
     sts.add(time=True)
-    sleep = random.randint(11, 27)
+    sleep = random.randint(9, 17)
     await msg_edit(m, "Processing...") 
     temp.IS_FRWD_CHAT.append(i.TO)
     temp.lock[user] = locked = True
