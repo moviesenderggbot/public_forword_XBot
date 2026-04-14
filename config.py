@@ -15,7 +15,7 @@ class Config:
     BOT_SESSION = os.environ.get("BOT_SESSION", "forward-bot") 
     DB_URL = os.environ.get("DB_URL", "mongodb+srv://StarGiftBot_db_user:gld1RLm4eYbCWZlC@cluster0.erob6sp.mongodb.net/?appName=Cluster0")
     DB_NAME = os.environ.get("DB_NAME", "madflixbotz")
-    OWNER_ID = [int(id) for id in os.environ.get("OWNER_ID", '7954726657').split()]
+    OWNER_ID = [int(id) for id in os.environ.get("OWNER_ID", '7812900454').split()]
 
 
 class temp(object): 
